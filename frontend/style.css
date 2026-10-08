@@ -1,0 +1,750 @@
+/* =========================================
+   SMART CAMPUS DIGITAL TWIN
+   Modern AI Dashboard UI
+========================================= */
+body {
+    background: red !important;
+}
+:root {
+    --bg: #f4f7fb;
+    --surface: #ffffff;
+    --surface-soft: #f8fafc;
+    --text: #172033;
+    --muted: #6b7280;
+    --border: #e5eaf1;
+
+    --primary: #4f46e5;
+    --primary-dark: #3730a3;
+    --primary-soft: #eef2ff;
+
+    --green: #16a34a;
+    --green-soft: #ecfdf3;
+
+    --blue: #2563eb;
+    --blue-soft: #eff6ff;
+
+    --orange: #f59e0b;
+    --orange-soft: #fffbeb;
+
+    --shadow-sm: 0 4px 14px rgba(15, 23, 42, 0.05);
+    --shadow-md: 0 12px 30px rgba(15, 23, 42, 0.08);
+
+    --radius: 18px;
+}
+
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+
+    background: var(--bg);
+    color: var(--text);
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+header {
+    min-height: 76px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 16px 6%;
+
+    background: rgba(255, 255, 255, 0.92);
+
+    border-bottom: 1px solid var(--border);
+
+    position: sticky;
+    top: 0;
+
+    z-index: 20;
+
+    backdrop-filter: blur(12px);
+}
+
+
+header h1 {
+    font-size: 22px;
+    font-weight: 800;
+
+    letter-spacing: -0.5px;
+}
+
+
+header p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 8px 14px;
+
+    border-radius: 999px;
+
+    background: var(--green-soft);
+
+    color: var(--green);
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+.status span {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: var(--green);
+
+    box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.12);
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+main {
+    width: min(1200px, 92%);
+
+    margin: 0 auto;
+
+    padding: 38px 0 60px;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+    min-height: 250px;
+
+    padding: 42px;
+
+    border-radius: 26px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 40px;
+
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(129, 140, 248, 0.28),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #111827,
+            #312e81
+        );
+
+    color: white;
+
+    box-shadow: var(--shadow-md);
+
+    margin-bottom: 28px;
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    right: -80px;
+    bottom: -100px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+
+.hero h2 {
+    font-size: clamp(30px, 4vw, 46px);
+
+    line-height: 1.05;
+
+    letter-spacing: -1.5px;
+
+    margin-bottom: 14px;
+}
+
+
+.hero p {
+    max-width: 610px;
+
+    color: rgba(255, 255, 255, 0.72);
+
+    font-size: 15px;
+}
+
+
+.building-select {
+    min-width: 230px;
+
+    padding: 18px;
+
+    background: rgba(255, 255, 255, 0.10);
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    border-radius: 16px;
+
+    backdrop-filter: blur(10px);
+}
+
+
+.building-select label {
+    display: block;
+
+    font-size: 12px;
+
+    color: rgba(255, 255, 255, 0.65);
+
+    margin-bottom: 8px;
+}
+
+
+.building-select select {
+    width: 100%;
+
+    padding: 11px 12px;
+
+    border: 0;
+
+    border-radius: 10px;
+
+    background: white;
+
+    color: var(--text);
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    outline: none;
+}
+
+
+/* =========================================
+   DASHBOARD CARDS
+========================================= */
+
+.cards {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 18px;
+
+    margin-bottom: 28px;
+}
+
+
+.card {
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    padding: 22px;
+
+    box-shadow: var(--shadow-sm);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.card:hover {
+    transform: translateY(-3px);
+
+    box-shadow: var(--shadow-md);
+}
+
+
+.card h3 {
+    font-size: 13px;
+
+    color: var(--muted);
+
+    font-weight: 700;
+
+    margin-bottom: 14px;
+}
+
+
+.card .value {
+    font-size: 30px;
+
+    font-weight: 800;
+
+    letter-spacing: -1px;
+}
+
+
+.card p {
+    color: var(--muted);
+
+    font-size: 12px;
+
+    margin-top: 5px;
+}
+
+
+.prediction-card {
+    background:
+        linear-gradient(
+            145deg,
+            #eef2ff,
+            #ffffff
+        );
+
+    border-color: #c7d2fe;
+}
+
+
+.prediction-card h3 {
+    color: var(--primary);
+}
+
+
+.prediction-card .value {
+    color: var(--primary-dark);
+}
+
+
+/* =========================================
+   COMMON SECTIONS
+========================================= */
+
+.controls,
+.trend-section,
+.what-if {
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    padding: 28px;
+
+    margin-bottom: 24px;
+
+    box-shadow: var(--shadow-sm);
+}
+
+
+.controls h2,
+.trend-section h2,
+.what-if h2 {
+    font-size: 21px;
+
+    letter-spacing: -0.4px;
+
+    margin-bottom: 6px;
+}
+
+
+.trend-section > p,
+.what-if > p {
+    color: var(--muted);
+
+    font-size: 13px;
+
+    margin-bottom: 22px;
+}
+
+
+/* =========================================
+   BUILDING CONTROLS
+========================================= */
+
+.control-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 18px;
+
+    margin: 24px 0;
+}
+
+
+.control-grid > div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+
+.control-grid label {
+    font-size: 12px;
+
+    font-weight: 700;
+
+    color: #4b5563;
+}
+
+
+.control-grid input {
+    width: 100%;
+
+    padding: 12px 13px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    background: var(--surface-soft);
+
+    color: var(--text);
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.control-grid input:focus {
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(79, 70, 229, 0.10);
+
+    background: white;
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+button {
+    border: none;
+
+    border-radius: 11px;
+
+    padding: 13px 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            #6366f1
+        );
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 18px
+        rgba(79, 70, 229, 0.22);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 24px
+        rgba(79, 70, 229, 0.28);
+}
+
+
+button:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   TREND CHART
+========================================= */
+
+.chart-container {
+    height: 330px;
+
+    position: relative;
+
+    padding-top: 10px;
+}
+
+
+/* =========================================
+   WHAT-IF
+========================================= */
+
+.what-if {
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #f8faff
+        );
+}
+
+
+.simulation {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 24px;
+
+    margin-bottom: 24px;
+}
+
+
+.simulation > div {
+    padding: 20px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 14px;
+
+    background: white;
+}
+
+
+.simulation label {
+    display: block;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    margin-bottom: 14px;
+}
+
+
+.simulation input[type="range"] {
+    width: 100%;
+
+    accent-color: var(--primary);
+
+    cursor: pointer;
+}
+
+
+.simulation strong {
+    display: inline-block;
+
+    margin-top: 10px;
+
+    color: var(--primary);
+
+    font-size: 15px;
+}
+
+
+/* =========================================
+   SIMULATION RESULTS
+========================================= */
+
+.simulation-result {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 14px;
+}
+
+
+.simulation-result > div {
+    padding: 18px;
+
+    border-radius: 13px;
+
+    background: var(--surface-soft);
+
+    border: 1px solid var(--border);
+}
+
+
+.simulation-result span {
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    margin-bottom: 6px;
+}
+
+
+.simulation-result strong {
+    font-size: 21px;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    padding: 25px;
+
+    text-align: center;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    border-top: 1px solid var(--border);
+
+    background: white;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .cards {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .control-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .hero {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+
+    .building-select {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    header {
+        padding: 14px 5%;
+    }
+
+
+    header h1 {
+        font-size: 18px;
+    }
+
+
+    main {
+        width: 94%;
+
+        padding-top: 22px;
+    }
+
+
+    .hero {
+        padding: 28px 22px;
+
+        border-radius: 20px;
+    }
+
+
+    .hero h2 {
+        font-size: 30px;
+    }
+
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+
+    .control-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .simulation {
+        grid-template-columns: 1fr;
+    }
+
+
+    .simulation-result {
+        grid-template-columns: 1fr;
+    }
+
+
+    .controls,
+    .trend-section,
+    .what-if {
+        padding: 20px;
+    }
+
+
+    .chart-container {
+        height: 280px;
+    }
+}

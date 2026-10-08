@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Campus Digital Twin</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div>
+
+        <h1>Smart Campus</h1>
+
+        <p>AI-Powered Digital Twin</p>
+
+    </div>
+
+
+    <div class="status">
+
+        <span></span>
+
+        System Online
+
+    </div>
+
+</header>
+
+
+
+<main>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div>
+
+            <h2>Campus Resource Intelligence</h2>
+
+            <p>
+                Monitor campus conditions and predict electricity
+                consumption using AI.
+            </p>
+
+        </div>
+
+
+        <div class="building-select">
+
+            <label>Building Type</label>
+
+            <select id="buildingType">
+
+                <option>Classroom Block</option>
+
+                <option>Hostel</option>
+
+                <option>Laboratory</option>
+
+                <option>Library</option>
+
+            </select>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- DASHBOARD CARDS -->
+
+    <section class="cards">
+
+
+        <div class="card">
+
+            <h3>👥 Occupancy</h3>
+
+            <div class="value">
+
+                <span id="occupancyValue">70</span>%
+
+            </div>
+
+            <p>Current occupancy</p>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <h3>🌡️ Temperature</h3>
+
+            <div class="value">
+
+                <span id="temperatureValue">30</span>°C
+
+            </div>
+
+            <p>Current temperature</p>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <h3>💧 Humidity</h3>
+
+            <div class="value">
+
+                <span id="humidityValue">55</span>%
+
+            </div>
+
+            <p>Current humidity</p>
+
+        </div>
+
+
+
+        <div class="card prediction-card">
+
+            <h3>⚡ AI Prediction</h3>
+
+            <div class="value">
+
+                <span id="predictionValue">Loading...</span>
+
+            </div>
+
+            <p>Predicted electricity consumption</p>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- BUILDING CONDITIONS -->
+
+    <section class="controls">
+
+        <h2>Building Conditions</h2>
+
+
+        <div class="control-grid">
+
+
+            <div>
+
+                <label>Occupancy (%)</label>
+
+                <input
+                    type="number"
+                    id="occupancy"
+                    value="70"
+                    min="0"
+                    max="100"
+                >
+
+            </div>
+
+
+
+            <div>
+
+                <label>Temperature (°C)</label>
+
+                <input
+                    type="number"
+                    id="temperature"
+                    value="30"
+                >
+
+            </div>
+
+
+
+            <div>
+
+                <label>Humidity (%)</label>
+
+                <input
+                    type="number"
+                    id="humidity"
+                    value="55"
+                >
+
+            </div>
+
+
+
+            <div>
+
+                <label>Lighting Usage</label>
+
+                <input
+                    type="number"
+                    id="lighting"
+                    value="60"
+                >
+
+            </div>
+
+
+
+            <div>
+
+                <label>AC Usage</label>
+
+                <input
+                    type="number"
+                    id="ac"
+                    value="70"
+                >
+
+            </div>
+
+
+
+            <div>
+
+                <label>Computer Usage</label>
+
+                <input
+                    type="number"
+                    id="computer"
+                    value="40"
+                >
+
+            </div>
+
+
+
+            <div>
+
+                <label>Water Consumption</label>
+
+                <input
+                    type="number"
+                    id="water"
+                    value="100"
+                >
+
+            </div>
+
+
+
+            <div>
+
+                <label>Waste Generated</label>
+
+                <input
+    type="number"
+    id="waste"
+    value="20"
+    min="0"
+>
+            </div>
+
+
+        </div>
+
+
+        <button onclick="predictElectricity()">
+
+            Predict Electricity ⚡
+
+        </button>
+
+
+    </section>
+
+
+
+    <!-- TREND -->
+
+    <section class="trend-section">
+
+        <h2>📈 Electricity Consumption Trend</h2>
+
+        <p>
+            Historical electricity consumption across the campus.
+        </p>
+
+
+        <div class="chart-container">
+
+            <canvas id="trendChart"></canvas>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- WHAT IF -->
+
+    <section class="what-if">
+
+        <h2>🔄 What-If Simulation</h2>
+
+        <p>
+            Change occupancy or AC usage and see how the AI prediction
+            changes.
+        </p>
+
+
+
+        <div class="simulation">
+
+
+            <!-- OCCUPANCY -->
+
+            <div>
+
+                <label>New Occupancy</label>
+
+
+                <input
+                    type="range"
+                    id="simOccupancy"
+                    min="0"
+                    max="100"
+                    value="70"
+                    oninput="updateSimulation()"
+                >
+
+
+                <strong id="simOccupancyValue">
+                    70%
+                </strong>
+
+            </div>
+
+
+
+            <!-- AC -->
+
+            <div>
+
+                <label>New AC Usage</label>
+
+
+                <input
+                    type="range"
+                    id="simAC"
+                    min="0"
+                    max="100"
+                    value="70"
+                    oninput="updateSimulation()"
+                >
+
+
+                <strong id="simACValue">
+                    70%
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- SIMULATION RESULTS -->
+
+        <div class="simulation-result">
+
+
+            <div>
+
+                <span>Current Prediction</span>
+
+                <strong id="currentPrediction">
+                    Loading...
+                </strong>
+
+            </div>
+
+
+
+            <div>
+
+                <span>Simulated Prediction</span>
+
+                <strong id="simulationPrediction">
+                    Loading...
+                </strong>
+
+            </div>
+
+
+
+            <div>
+
+                <span>Change</span>
+
+                <strong id="predictionChange">
+                    Loading...
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<footer>
+
+    Smart Campus Digital Twin • Machine Learning Powered
+
+</footer>
+
+
+
+<!-- CHART.JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<!-- OUR JAVASCRIPT -->
+
+<script src="script.js"></script>
+
+
+
+<!-- INITIALIZE DASHBOARD -->
+
+<script>
+
+    window.addEventListener("load", async function () {
+
+        // First get the real AI prediction
+        await predictElectricity();
+
+        // Then initialize the What-If simulation
+        await updateSimulation();
+
+    });
+
+</script>
+
+
+</body>
+
+</html>
