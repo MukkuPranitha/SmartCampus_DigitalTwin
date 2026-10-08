@@ -2,9 +2,6 @@
    SMART CAMPUS DIGITAL TWIN
    Modern AI Dashboard UI
 ========================================= */
-body {
-    background: red !important;
-}
 :root {
     --bg: #f4f7fb;
     --surface: #ffffff;
