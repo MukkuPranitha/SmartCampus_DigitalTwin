@@ -8,8 +8,10 @@ import joblib
 app = FastAPI(title="Smart Campus Digital Twin API")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
+    allow_origins=[
+        "https://smartcampusdigitaltwin-frontend.vercel.app"
+    ],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
