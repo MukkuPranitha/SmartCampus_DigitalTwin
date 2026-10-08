@@ -1,5 +1,5 @@
-const API_URL = "http://127.0.0.1:8000";
-
+const API_URL = "https://smart-campus-backend-nvv6.onrender.com";
+// Production backend
 
 // ==========================================
 // MAIN AI PREDICTION
